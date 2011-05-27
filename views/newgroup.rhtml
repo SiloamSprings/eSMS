@@ -1,0 +1,31 @@
+<%= erb :header %>
+    <h1>New Pagegroup</h1>
+
+    <br />
+    <br />
+    <form name="newgroup" method="POST">
+      <table>
+        <tr>
+          <td>NAME</td>
+          <td><input type="text" name="name" /></td>
+        </tr>
+        <tr>
+          <td>DESCRIPTION</td> 
+          <td><input type="text" name="description" /></td>
+        </tr>
+
+        <tr><td colspan=2 align=center>
+            <select name="contact[]" multiple="multiple" class="asmselect" title="Select Contacts">
+              <% @contacts.each do |contact| %>
+                <option value=<%= contact.id %>><%= contact.name %></option>
+              <% end %>
+            </select>
+        </td></tr>
+
+        <tr>
+          <td colspan=2><input type="submit" value="Create" /></td>
+        </tr>
+     </table>
+    </form>
+
+<%= erb :footer %>

@@ -1,0 +1,25 @@
+<%= erb :header %>
+
+<SCRIPT LANGUAGE="JavaScript">
+  function textCounter(field, countfield, maxlimit) {
+    if (field.value.length > maxlimit) // if too long...trim it!
+      field.value = field.value.substring(0, maxlimit);
+      // otherwise, update 'characters left' counter
+    else 
+      countfield.value = maxlimit - field.value.length;
+  }
+</script>
+
+  <form name="quicksend" method="POST">
+    <h2>Number</h2>
+    <input type="text" name="number" />
+    <input type="submit" value="Send" /><br />
+    <h2>Message</h2>
+    <textarea name="body" COLS=40 ROWS=6
+      onKeyDown="textCounter(this.form.message,this.form.remLen,125);" 
+      onKeyUp="textCounter(this.form.message,this.form.remLen,125);">
+    </textarea><br />
+    <input readonly type=text name=remLen size=3 maxlength=3 value="125">
+  </form>
+
+<%= erb :footer %>

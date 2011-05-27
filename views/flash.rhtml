@@ -1,0 +1,15 @@
+<font color="red">eSMS release beta0.  There will be bugs, please use the support link at the bottom of the page to report issues</font>
+
+<p>
+<font color=green>
+<%= "No current notices or errors." unless (flash[:errors] || flash[:notice]) %>
+</font>
+</font>
+<font color=red>
+  <% if flash[:notice] %>                                                      
+    Notice: <%= flash[:notice] %><br />
+  <% end %>                                               
+  <% if flash[:errors] %>                                 
+    Errors: <%= flash[:errors] %><br />
+  <% end %>
+</font>

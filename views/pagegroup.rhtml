@@ -1,0 +1,17 @@
+<%= erb :header %>
+
+  <form name="pagegroup" method="POST">
+    <h2>Group</h2>
+
+    <select name="group">
+      <% @groups.each do |group| %>
+        <option value=<%= group.id %>><%= group.name %></option>
+      <% end %>
+    </select>
+
+    <input type="submit" value="Send" /><br />
+    <h2>Message</h2>
+    <textarea name="body" COLS=40 ROWS=6></textarea>
+  </form>
+
+<%= erb :footer %>

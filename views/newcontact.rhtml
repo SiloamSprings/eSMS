@@ -1,0 +1,27 @@
+<%= erb :header %>
+<h1>New Contact</h1>
+
+    <form name="newcontact" method="POST">
+      <table>
+        <tr>
+          <td>NAME</td>
+          <td><input type="text" name="name" /></td>
+        </tr>
+          <td>NUMBER</td> 
+          <td><input type="text" name="number" /></tr>
+        <tr>
+          <td colspan=2 align=center valign=center>
+            <select name="group[]" class="asmselect" multiple="multiple" title="Select Groups">
+              <% @groups.each do |group| %>
+                <option value=<%= group.id %>><%= group.name %></option>
+              <% end %>
+            </select>
+          </td>
+        </tr>
+        <tr>
+          <td colspan=2><input type="submit" value="Create" /></td>
+        </tr>
+      </table>
+    </form>
+
+<%= erb :footer %>

@@ -1,0 +1,68 @@
+<%= erb :header %>
+
+<h1>Welcome to the admin panel</h1>
+<%= erb :flash %>
+
+  <br />
+  <br />
+  <h2>Usage Estimates</h2>
+  <ul>
+    <li>Messages sent as of <b>DATE</b>:  <b>COUNT</b></li>
+    <li>Estimated cost (at $0.02/msg):  <b>TOTAL</b></li>
+  </ul>
+
+  <h2>List Control</h2>
+  <ul>
+    <li><a href="/newcontact">New Contact</a></li>
+    <li><a href="/newgroup">New Pagegroup</a></li>
+  </ul>
+
+  <h2>Pagegroups</h2>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Action</th>
+    </tr>
+    <% @grouplist.each do |group| %>
+    <tr>
+      <td><%= group.name %></td>
+      <td><%= group.description %></td>
+      <td rowspan=2><a href=<%= "/editgroup/#{group.id}" %>>Edit</a>, <a href=<%= "/delgroup/#{group.id}" %>>Delete</a></td>
+      <tr>
+        <td colspan=2 bgcolor=#FDD017><b>Members: </b>
+          <% group.contacts.each do |contact| %>
+            <%= "#{contact.name}, " %>
+          <% end %>
+      </td>
+      <tr>
+    </tr>
+    <% end %>
+  </table>
+
+  <h2>Contacts</h2>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Number</th>
+      <th>Action</th>
+    </tr>
+    <% @contacts.each do |contact| %>
+      <tr>
+        <td><%= contact.name %></td>
+        <td><%= contact.number %></td>
+        <td rowspan=2><a href=<%= "/editcontact/#{contact.id}" %>>Edit</a>, <a href=<%= "/delcontact/#{contact.id}" %>>Delete</a></td>
+        <tr>
+          <td colspan=2 bgcolor=#FDD017><b>Pagegroups: </b>
+            <% contact.pagegroups.each do |pagegroup| %>
+              <%= "#{pagegroup.name}, " %>
+            <% end %>
+          </td>
+      </tr>
+    </tr>
+    <% end %>
+  </table>
+
+
+
+<%= erb :footer %>

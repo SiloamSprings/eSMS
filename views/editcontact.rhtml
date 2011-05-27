@@ -1,0 +1,31 @@
+<%= erb :header %>
+
+<form name="editcontact" method="POST">
+  <table>
+    <tr>
+      <td>NAME</td>  
+      <td><input type="text" name="name" value="<%= @contact.name %>"></input></td>
+    </tr>
+    <tr>
+      <td>NUMBER</td>  
+      <td><input type="text" name="number" value="<%= @contact.number %>"></input></td>
+    </tr>
+    <tr>
+      <td colspan=2 align=center valign=center>
+        <select name="group[]" multiple="multiple" class="asmselect" title="Select Groups">
+          <% @groups.each do |group| %>
+            <% if @contact.pagegroups.get(group.id) %>
+              <option value="<%= group.id %>" selected="selected"><%= group.name %></option>
+            <% else %>
+              <option value="<%= group.id %>"><%= group.name %></option>
+            <% end %>
+          <% end %>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td colspan=2><input type="submit" value="submit"></input></td>
+    </table>
+</form>
+
+<%= erb :footer %>
